@@ -17,7 +17,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={`${beVietnamPro.variable} h-full antialiased`}>
+    <html lang="fr" data-scroll-behavior="smooth" className={`${beVietnamPro.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Navbar />
         <main>{children}</main>

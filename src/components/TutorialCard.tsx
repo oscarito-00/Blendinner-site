@@ -1,34 +1,30 @@
 import Link from "next/link";
-import ArrowIcon from "./ArrowIcon";
 import type { Tutorial } from "@/types/content";
+import ArrowIcon from "./ArrowIcon";
 
 export default function TutorialCard({ tutorial }: { tutorial: Tutorial }) {
   return (
-    <Link href={`/tutoriels/${tutorial.slug}`} className="tuto-card">
+    <div className="tuto-card">
       <div className="tuto-card-image">
         {tutorial.coverImage ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={tutorial.coverImage} alt={tutorial.title} />
         ) : (
           <div className="tuto-card-image-placeholder">
-            <span>
-              Image tutoriel N°{tutorial.number} — {tutorial.title}
-            </span>
+            <span>En cours de production</span>
           </div>
         )}
       </div>
-      <div className="tuto-card-bottom">
-        <div className="tuto-card-left">
+      <div className="tuto-card-content">
+        <div className="tuto-card-text">
           <span className="tuto-card-num">Tutoriel n°{tutorial.number}</span>
-          <p className="tuto-card-title">{tutorial.cardSummary}</p>
-        </div>
-        <div className="tuto-card-right">
           <span className="tuto-card-label">{tutorial.title}</span>
-          <div className="tuto-card-arrow">
-            <ArrowIcon />
-          </div>
+          <p className="tuto-card-summary">{tutorial.cardSummary}</p>
         </div>
+        <Link href={`/tutoriels/${tutorial.slug}`} className="tuto-card-arrow-btn" aria-label={`Accéder au tutoriel ${tutorial.title}`}>
+          <ArrowIcon />
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 }

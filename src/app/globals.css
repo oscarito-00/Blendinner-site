@@ -7,7 +7,7 @@
    border-line…) ET expose les variables CSS --color-* réutilisées
    par les styles de composants ci-dessous.
    ============================================================ */
-@theme {
+:root {
   --color-bg: #080808;
   --color-bg2: #111111;
   --color-bg3: #1a1a1a;
@@ -21,8 +21,8 @@
   --color-line-soft: rgba(244, 244, 244, 0.12);
   /* Bords de composants (kbd, bouton plein écran) */
   --color-line2: rgba(244, 244, 244, 0.22);
-  --color-blue: #4400ff;
-  --color-blue-h: #3800d6;
+  --color-blue: #0068ff;
+  --color-blue-h: #0056d6;
   --color-btn-bg: #f8f5f4;
   --color-btn-txt: #080808;
   --font-sans: var(--font-be-vietnam), sans-serif;
@@ -59,6 +59,7 @@ body {
 }
 
 main { flex: 1; display: flex; flex-direction: column; }
+article { width: 100%; }
 /* Conteneur de transition de page (template.tsx) — reproduit le comportement
    flex de <main> pour que les pages en flex:1 (à propos, téléchargement) remplissent. */
 .route-transition { flex: 1; display: flex; flex-direction: column; }
@@ -77,9 +78,8 @@ nav {
   background: var(--bg);
   flex-shrink: 0;
 }
-.nav-logo { display: flex; align-items: center; gap: 14px; cursor: pointer; text-decoration: none; }
-.logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
-.logo-name { font-size: 18px; font-weight: 600; letter-spacing: 0.04em; color: var(--text); }
+.nav-logo { display: flex; align-items: center; cursor: pointer; text-decoration: none; }
+.logo-icon { height: 28px; width: auto; flex-shrink: 0; position: relative; top: -4px; left: -10px; }
 .nav-links { display: flex; align-items: center; gap: 52px; list-style: none; }
 .nav-links a {
   font-size: 16px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase;
@@ -87,10 +87,11 @@ nav {
 }
 .nav-links a:hover, .nav-links a.active { opacity: 1; }
 .nav-links a.active { border-bottom: 1.5px solid var(--text); padding-bottom: 2px; }
+.nav-link-icon { height: 25px; width: auto; display: block; margin-top: 6px; }
 
 /* ── PAGE : HOME ── */
 .home-video-zone {
-  width: 100%; height: calc(100vh - 80px); position: relative; overflow: hidden;
+  width: 100%; height: 100vh; margin-top: -80px; position: relative; overflow: hidden;
   background: var(--bg2); display: flex; align-items: center; justify-content: center;
   border-bottom: 1px solid var(--line); flex-shrink: 0;
 }
@@ -111,11 +112,8 @@ nav {
 .fullscreen-icon span:nth-child(4) { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
 
 /* ── BANDE TEXTE + CTA ── */
-.home-bottom { display: flex; min-height: 260px; border-bottom: 1px solid var(--line); }
-.home-bottom-left {
-  flex: 0 0 77%; background: var(--bg); padding: 44px 48px 44px 40px;
-  display: flex; flex-direction: column; justify-content: center; gap: 40px; border-right: 1px solid var(--line);
-}
+.home-bottom { display: flex; justify-content: center; align-items: stretch; min-height: 600px; padding: 60px 40px 50px; border-bottom: 1px solid var(--line); }
+.home-bottom-content { max-width: 520px; width: 100%; display: flex; flex-direction: column; justify-content: space-between; }
 .home-text { font-size: clamp(14px, 1.5vw, 18px); font-weight: 400; line-height: 1.65; color: var(--text); opacity: 0.88; max-width: 900px; }
 .btn-main {
   display: inline-flex; align-items: center; justify-content: center;
@@ -124,15 +122,9 @@ nav {
   padding: 0 48px; height: 64px; cursor: pointer; border: none; text-decoration: none; align-self: flex-start; transition: opacity 0.2s;
 }
 .btn-main:hover { opacity: 0.85; }
-.home-bottom-right {
-  flex: 0 0 23%; background: var(--blue); padding: 44px 36px; display: flex; flex-direction: column;
-  justify-content: space-between; align-items: flex-start; transition: background 0.2s; cursor: pointer;
-}
-.home-bottom-right:hover { background: var(--blue-h); }
-.home-bottom-right .btn-main { align-self: stretch; justify-content: center; background: var(--text); color: var(--bg); }
-.home-bottom-label { font-size: clamp(16px, 1.8vw, 24px); font-weight: 400; color: #f8f5f4; line-height: 1.25; letter-spacing: -0.01em; }
-.home-bottom-arrow { align-self: flex-end; width: clamp(60px, 6vw, 100px); height: clamp(60px, 6vw, 100px); flex-shrink: 0; }
-.home-bottom-arrow svg { width: 100%; height: 100%; }
+.home-bottom-content .btn-main { background: var(--blue); color: var(--text); align-self: stretch; height: 96px; padding: 0 24px 0 32px; text-transform: none; justify-content: space-between; font-size: clamp(15px, 1.4vw, 19px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.25; }
+.home-bottom-content .btn-main .arrow-icon { width: 44px; height: 44px; }
+.home-bottom-content .btn-main:hover { background: var(--blue-h); opacity: 1; }
 
 /* ── FOOTER ── */
 footer {
@@ -144,26 +136,19 @@ footer {
 .footer-right a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 
 /* ── PAGE : TUTORIELS (galerie) ── */
-.tuto-card { display: flex; flex-direction: column; border-bottom: 1px solid var(--line); cursor: pointer; text-decoration: none; }
-.tuto-card-image {
-  width: 100%; aspect-ratio: 16 / 6; background: var(--bg2); overflow: hidden; position: relative; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--line);
-}
+.tuto-card { display: flex; flex-direction: row; border-bottom: 1px solid var(--line); }
+.tuto-card-image { flex: 0 0 50%; aspect-ratio: 16 / 9; background: var(--bg2); overflow: hidden; border-right: 1px solid var(--line); flex-shrink: 0; }
 .tuto-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .tuto-card-image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--bg2); }
 .tuto-card-image-placeholder span { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); font-weight: 500; }
-.tuto-card-bottom { display: flex; min-height: 260px; }
-.tuto-card-left { flex: 0 0 77%; background: var(--bg); padding: 44px 48px 44px 40px; display: flex; flex-direction: column; gap: 18px; border-right: 1px solid var(--line); }
-.tuto-card-num { font-size: clamp(16px, 1.8vw, 24px); font-weight: 400; letter-spacing: -0.01em; text-transform: uppercase; color: var(--text); line-height: 1.25; }
-.tuto-card-title { font-size: clamp(15px, 1.5vw, 20px); font-weight: 300; line-height: 1.65; color: var(--text); opacity: 0.88; max-width: 900px; }
-.tuto-card-right {
-  flex: 0 0 23%; background: var(--blue); padding: 44px 36px; display: flex; flex-direction: column;
-  justify-content: space-between; position: relative; overflow: hidden; transition: background 0.2s;
-}
-.tuto-card-right:hover { background: var(--blue-h); }
-.tuto-card-label { font-size: clamp(16px, 1.8vw, 24px); font-weight: 400; color: #f8f5f4; line-height: 1.25; letter-spacing: -0.01em; }
-.tuto-card-arrow { align-self: flex-end; width: clamp(60px, 6vw, 100px); height: clamp(60px, 6vw, 100px); flex-shrink: 0; }
-.tuto-card-arrow svg { width: 100%; height: 100%; }
+.tuto-card-content { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.tuto-card-text { flex: 1; padding: 44px 48px 32px 40px; display: flex; flex-direction: column; gap: 14px; }
+.tuto-card-arrow-btn { background: var(--blue); display: flex; align-items: center; justify-content: flex-end; padding-right: 40px; height: 80px; transition: background 0.2s; text-decoration: none; }
+.tuto-card-arrow-btn .arrow-icon { width: 36px; height: 36px; }
+.tuto-card-arrow-btn:hover { background: var(--blue-h); }
+.tuto-card-num { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); }
+.tuto-card-label { font-size: clamp(20px, 2.2vw, 32px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--text); }
+.tuto-card-summary { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--text); opacity: 0.85; }
 
 /* ── PAGE : À PROPOS ── */
 .about-layout { display: grid; grid-template-columns: 1fr 1fr; flex: 1; }
@@ -171,6 +156,7 @@ footer {
 .about-left h1 { font-size: clamp(32px, 3.5vw, 52px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 40px; }
 .about-left h1 em { font-style: italic; font-weight: 300; }
 .about-body { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--text); opacity: 0.85; max-width: 520px; }
+.about-body p { margin: 0; }
 .about-body p + p { margin-top: 1.4em; }
 .about-right { padding: 80px 40px 80px 60px; display: flex; flex-direction: column; gap: 0; }
 .about-block { padding: 36px 0; border-bottom: 1px solid var(--line); }
@@ -188,9 +174,9 @@ footer {
 .dl-file-info { display: flex; flex-direction: column; gap: 6px; }
 .dl-file-name { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--text); opacity: 0.85; }
 .dl-file-meta { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); }
-.btn-dl-svg { background: none; border: 1px solid var(--line); padding: 0; cursor: pointer; flex-shrink: 0; width: 64px; height: 64px; display: block; transition: opacity 0.2s, transform 0.15s; opacity: 0.92; }
+.btn-dl-svg { background: var(--blue); border: none; padding: 0; cursor: pointer; flex-shrink: 0; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s, transform 0.15s; opacity: 0.92; }
 .btn-dl-svg:hover { opacity: 1; transform: translateY(-1px); }
-.btn-dl-svg svg { width: 100%; height: 100%; display: block; }
+.btn-dl-svg img { width: 40%; height: 40%; display: block; }
 .dl-count { display: block; margin-top: 40px; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); }
 .dl-notice { margin-top: auto; padding-top: 28px; font-size: 12px; font-style: italic; color: var(--muted2); line-height: 1.6; }
 
@@ -212,13 +198,24 @@ footer {
 
 /* ── PAGES TUTORIEL (détail) ── */
 .tuto-hero { display: flex; border-bottom: 1px solid var(--line-soft); }
-.tuto-hero-left { flex: 0 0 77%; padding: 52px 48px 52px 40px; border-right: 1px solid var(--line-soft); display: flex; flex-direction: column; gap: 16px; }
-.tuto-hero-num { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted2); }
+.tuto-hero-left { flex: 1; padding: 52px 48px 52px 40px; display: flex; flex-direction: column; gap: 16px; }
+.tuto-hero-num { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); }
 .tuto-hero-title { font-size: clamp(28px,3.5vw,52px); font-weight: 400; letter-spacing: -.02em; line-height: 1.1; color: var(--text); }
 .tuto-hero-desc { font-size: clamp(15px,1.5vw,19px); font-weight: 300; line-height: 1.65; color: var(--text); opacity: .8; max-width: 700px; margin-top: 8px; }
-.tuto-hero-right { flex: 0 0 23%; background: var(--blue); display: flex; align-items: flex-end; justify-content: flex-end; padding: 28px; }
-.tuto-hero-right svg { width: clamp(50px,5vw,80px); height: clamp(50px,5vw,80px); }
-.tuto-body { max-width: 860px; padding: 64px 40px 80px; }
+.tuto-hero-right { order: -1; flex: 0 0 auto; width: 16%; aspect-ratio: 1 / 1; background: var(--blue); display: flex; align-items: flex-end; justify-content: flex-end; padding: 28px; text-decoration: none; transition: background 0.2s; border-right: 1px solid var(--line-soft); }
+.tuto-hero-right:hover { background: var(--blue-h); }
+.tuto-hero-right .arrow-icon { width: clamp(50px,5vw,80px); height: clamp(50px,5vw,80px); }
+.tuto-article { width: 100%; display: flex; flex-direction: column; flex: 1; }
+.tuto-layout { display: flex; flex: 1; }
+.tuto-body { flex: 1; min-width: 0; max-width: 860px; padding: 64px 40px 80px; }
+.tuto-sidebar { flex: 0 0 400px; border-left: 1px solid var(--line-soft); }
+.tuto-sidebar-inner { position: sticky; top: 80px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 64px 24px 80px 40px; }
+.tuto-sidebar-heading { font-size: clamp(20px,2.2vw,30px); font-weight: 400; letter-spacing: -.02em; line-height: 1.2; color: var(--text); margin-bottom: 20px; }
+.tuto-sidebar-group { margin-bottom: 28px; }
+.tuto-sidebar-group .about-block-label { margin-bottom: 8px; }
+.tuto-sidebar-row { display: flex; flex-direction: column; gap: 4px; font-size: 15px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+.tuto-sidebar-key { font-weight: 500; color: var(--text); opacity: .9; }
+.tuto-sidebar-desc { font-weight: 300; color: var(--text); opacity: .6; }
 .tuto-section { margin-bottom: 56px; }
 .tuto-section-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 .tuto-section-label::after { content: ''; flex: 1; max-width: 32px; height: 1px; background: var(--muted2); opacity: .4; }
@@ -240,14 +237,15 @@ kbd { display: inline-block; background: var(--bg3); border: 1px solid var(--lin
 .tuto-note { background: var(--bg2); border-left: 2px solid var(--blue); padding: 20px 24px; margin: 28px 0; font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--text); opacity: .9; }
 .tuto-note strong { font-weight: 600; color: var(--text); opacity: 1; }
 .tuto-section a, .tuto-note a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
-.tuto-img { width: 100%; aspect-ratio: 16/7; background: var(--bg2); border: 1px solid var(--line-soft); display: flex; align-items: center; justify-content: center; margin: 28px 0; overflow: hidden; }
-.tuto-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tuto-img { width: 100%; background: var(--bg2); border: 1px solid var(--line-soft); margin: 28px 0; }
+.tuto-img img { width: 100%; height: auto; display: block; }
 .tuto-img span { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted2); font-weight: 500; }
-.tuto-page-nav { display: flex; border-top: 1px solid var(--line-soft); }
-.tuto-page-nav-prev, .tuto-page-nav-next { flex: 1; padding: 32px 40px; color: var(--text); display: flex; align-items: center; gap: 16px; transition: background .2s; font-size: 14px; font-weight: 400; cursor: pointer; text-decoration: none; }
-.tuto-page-nav-prev { border-right: 1px solid var(--line-soft); }
+.tuto-page-nav { display: flex; border-top: 1px solid var(--line-soft); overflow: hidden; }
+.tuto-page-nav-prev, .tuto-page-nav-next { height: 150px; padding: 0 40px; box-sizing: border-box; color: var(--text); display: flex; align-items: center; gap: 16px; transition: background .2s; font-size: 14px; font-weight: 400; cursor: pointer; text-decoration: none; outline: none; }
+.tuto-page-nav-prev { flex: 1; border-right: 1px solid var(--line-soft); }
+.tuto-page-nav-next { flex: 1; justify-content: flex-end; text-align: right; }
 .tuto-page-nav-prev:hover, .tuto-page-nav-next:hover { background: var(--bg2); }
-.tuto-page-nav-next { justify-content: flex-end; text-align: right; }
+.tuto-page-nav-prev:focus, .tuto-page-nav-next:focus { outline: none; }
 .tuto-page-nav-spacer { flex: 1; border-right: 1px solid var(--line-soft); }
 .tuto-page-nav-label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted2); display: block; margin-bottom: 4px; }
 
@@ -255,9 +253,7 @@ kbd { display: inline-block; background: var(--bg3); border: 1px solid var(--lin
 @media (max-width: 900px) {
   nav { padding: 0 20px; }
   .nav-links { gap: 28px; }
-  .home-bottom-left { padding: 28px 20px; }
-  .home-bottom { flex-direction: column; min-height: auto; }
-  .home-bottom-right { flex: none; min-height: 140px; padding: 28px 20px; }
+  .home-bottom { padding: 60px 20px; min-height: auto; }
   footer { padding: 24px 20px; }
   .about-layout { grid-template-columns: 1fr; }
   .about-left { border-right: none; border-bottom: 1px solid var(--line); padding: 48px 20px; }
@@ -265,10 +261,9 @@ kbd { display: inline-block; background: var(--bg3); border: 1px solid var(--lin
   .dl-layout { grid-template-columns: 1fr; }
   .dl-left { border-right: none; border-bottom: 1px solid var(--line); padding: 48px 20px; }
   .dl-right { padding: 48px 20px; }
-  .tuto-card-bottom { flex-direction: column; min-height: auto; }
-  .tuto-card-left { flex: none; padding: 28px 20px; border-right: none; border-bottom: 1px solid var(--line); }
-  .tuto-card-right { flex: none; padding: 28px 20px; min-height: 140px; }
-  .tuto-card-image { aspect-ratio: 16/7; }
+  .tuto-card { flex-direction: column; }
+  .tuto-card-image { flex: none; aspect-ratio: 16/7; border-right: none; border-bottom: 1px solid var(--line); }
+  .tuto-card-text { padding: 28px 20px; }
   .home-news-header { padding: 24px 20px 20px; }
   .home-news-grid { grid-template-columns: 1fr; }
   .news-card { border-right: none; border-bottom: 1px solid var(--line); }
@@ -278,11 +273,12 @@ kbd { display: inline-block; background: var(--bg3); border: 1px solid var(--lin
   .tuto-hero-left { flex: none; padding: 36px 20px; border-right: none; border-bottom: 1px solid var(--line-soft); }
   .tuto-hero-right { flex: none; min-height: 100px; padding: 20px; }
   .tuto-body { padding: 40px 20px 60px; }
+  .tuto-sidebar { display: none; }
   .tuto-page-nav-prev, .tuto-page-nav-next { padding: 24px 20px; }
 }
 
 @media (max-width: 600px) {
   .nav-links { gap: 18px; }
   .nav-links a { font-size: 11px; }
-  .logo-name { font-size: 15px; }
+  .logo-icon { height: 26px; }
 }

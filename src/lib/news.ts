@@ -10,21 +10,24 @@ export interface NewsItem {
 
 export const news: NewsItem[] = [
   {
-    date: "12 Mai 2026",
-    title: "Blender 4.4 est disponible",
-    text: "La nouvelle version apporte des améliorations majeures au moteur de rendu Cycles, un nouveau système de nœuds géométriques et des performances accrues en viewport.",
-    imageLabel: "Image — Blender 4.4",
+    date: "19 Mai 2026",
+    title: "Blender 5.1.2 est en ligne",
+    text: "La version 5.1.2 de Blender est disponible au téléchargement. Cette mise à jour corrective apporte des correctifs de stabilité et des améliorations de performances.",
+    imageLabel: "Image — Blender 5.1.2",
+    image: "/actualité/blender-actu1.jpg",
   },
   {
-    date: "28 Avril 2026",
-    title: "EEVEE Next : ray-tracing en temps réel",
-    text: "EEVEE Next intègre désormais un ray-tracing partiel qui comble considérablement l'écart avec Cycles pour les rendus rapides de qualité studio.",
-    imageLabel: "Image — EEVEE Next",
+    date: "17 Juin 2026",
+    title: "Les deux premiers tutoriels sont en ligne",
+    text: "Les tutoriels n°1 et n°2 sont désormais disponibles sur le site : interface & navigation et modélisation de base. De quoi bien démarrer avec Blender.",
+    imageLabel: "Image — Tutoriels",
+    image: "/actualité/blender-actu2.jpg",
   },
   {
-    date: "3 Avril 2026",
-    title: "La bibliothèque d'assets s'enrichit",
-    text: "La fondation Blender publie 200 nouveaux assets CC0 : matériaux PBR, HDRIs, objets et poses de personnages directement utilisables dans vos projets.",
-    imageLabel: "Image — Asset Library",
+    date: "23 Juin 2026",
+    title: "Blender in Annecy 2026",
+    text: "La communauté Blender se retrouve à Annecy pour un Blender Breakfast, en marge du Festival International du Film d'Animation.",
+    imageLabel: "Image — Blender Breakfast Annecy",
+    image: "/actualité/blender-actu3.jpg",
   },
 ];

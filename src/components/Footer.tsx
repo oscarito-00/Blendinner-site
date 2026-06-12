@@ -2,7 +2,7 @@
 export default function Footer() {
   return (
     <footer>
-      <span className="footer-left">Blendinner — Blender for beginner, 2026.</span>
+      <span className="footer-left">Blendinner — Blender for beginners, 2026.</span>
       <span className="footer-right">
         <svg
           style={{ width: 16, height: 16, flexShrink: 0, fill: "#cc0000", verticalAlign: "middle" }}

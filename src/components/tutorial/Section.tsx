@@ -4,6 +4,7 @@ import NotionGrid from "./NotionGrid";
 import ShortcutTable from "./ShortcutTable";
 import Note from "./Note";
 import TutorialImage from "./TutorialImage";
+import TutorialVideo from "./TutorialVideo";
 
 // Rend une section générique en parcourant ses blocs typés.
 // Ajouter un nouveau type de bloc = un case ici + une entrée dans
@@ -35,6 +36,8 @@ export default function Section({ section }: { section: TutorialSection }) {
             return <Note key={i} lead={block.lead} text={block.text} />;
           case "image":
             return <TutorialImage key={i} src={block.src} caption={block.caption} />;
+          case "video":
+            return <TutorialVideo key={i} youtubeId={block.youtubeId} caption={block.caption} />;
         }
       })}
     </section>
