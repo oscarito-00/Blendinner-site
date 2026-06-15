@@ -1,5 +1,12 @@
-// Bloc vidéo d'un tutoriel — embed YouTube en iframe responsive.
-export default function TutorialVideo({ youtubeId, caption }: { youtubeId: string; caption?: string }) {
+// Bloc vidéo d'un tutoriel — embed YouTube si youtubeId fourni, placeholder sinon.
+export default function TutorialVideo({ youtubeId, caption }: { youtubeId?: string; caption?: string }) {
+  if (!youtubeId) {
+    return (
+      <div className="tuto-img">
+        <span>{caption ?? "Vidéo à venir"}</span>
+      </div>
+    );
+  }
   return (
     <div className="tuto-img">
       <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden" }}>

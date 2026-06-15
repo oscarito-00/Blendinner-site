@@ -176,7 +176,7 @@ export const tutorials: Tutorial[] = [
           },
           {
             type: "video",
-            youtubeId: "nBeHs0gIFUw",
+            youtubeId: "ZOVeLQWa7wI",
           },
           {
             type: "paragraph",
@@ -191,54 +191,97 @@ export const tutorials: Tutorial[] = [
     number: 2,
     title: "Modélisation",
     description:
-      "Apprenez à construire n'importe quelle forme 3D en maîtrisant le Edit Mode et ses outils essentiels.",
+      "Apprenez à agir sur les objets, maîtrisez le Edit Mode et ses outils essentiels pour construire n'importe quelle forme 3D.",
     coverImage: "/images-tutoriels/Tutoriel-2_pres.png",
     cardSummary:
-      "La modélisation polygonale est le fondement de toute création 3D dans Blender. Ce tutoriel couvre le Edit Mode et ses outils essentiels — extrusion, Loop Cut, Bevel, Inset — pour apprendre à construire n'importe quelle forme géométrique en manipulant vertices, edges et faces.",
+      "La modélisation polygonale est le fondement de toute création 3D dans Blender. Ce tutoriel couvre les transformations d'objets (déplacement, échelle, rotation), le Edit Mode et ses outils essentiels — extrusion, Loop Cut, Bevel, Insert, Knife — pour construire n'importe quelle forme géométrique.",
     sections: [
+      {
+        label: "Déplacement",
+        heading: "Actions sur un objet",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Maintenant que tu sais te déplacer toi, on va pouvoir agir sur les objets. Pour commencer clic sur le cube au centre de la scène (quand il est sélectionné son contour est en orange et le point au centre est son origine) et appuie sur la touche [[G]]. Tu peux déplacer l'objet librement dans la scène et si tu veux le déplacer sur un des 3 axes appuie sur [[X]], [[Y]] ou [[Z]].",
+          },
+          {
+            type: "video",
+            youtubeId: "YkRwP-sgWNg",
+            caption: "Vidéo — Déplacement d'un objet avec G et contrainte d'axe",
+          },
+          {
+            type: "paragraph",
+            text: "Ensuite, si tu veux changer l'échelle d'un objet appuie sur la touche [[S]], tu pourras agrandir ou rétrécir l'objet. Tu peux toujours appuyer sur [[X]], [[Y]] ou [[Z]] si tu veux que l'échelle se fasse que sur un des trois axes.",
+          },
+          {
+            type: "video",
+            youtubeId: "ekBzmla9PuU",
+            caption: "Vidéo — Mise à l'échelle d'un objet avec S",
+          },
+          {
+            type: "paragraph",
+            text: "Finalement, si tu veux changer l'orientation d'un objet appuie sur la touche [[R]], tu pourras tourner l'objet. Tu peux toujours appuyer sur [[X]], [[Y]] ou [[Z]] si tu veux que la rotation se fasse que sur un des trois axes.",
+          },
+          {
+            type: "video",
+            youtubeId: "AJtvugF_TKs",
+            caption: "Vidéo — Rotation d'un objet avec R",
+          },
+          {
+            type: "shortcuts",
+            rows: [
+              { keys: "[[G]]", desc: "Déplacer l'objet — suivi de [[X]], [[Y]] ou [[Z]] pour contraindre l'axe" },
+              { keys: "[[S]]", desc: "Mettre à l'échelle — suivi de [[X]], [[Y]] ou [[Z]] pour un seul axe" },
+              { keys: "[[R]]", desc: "Faire pivoter — suivi de [[X]], [[Y]] ou [[Z]] pour un seul axe" },
+            ],
+          },
+        ],
+      },
       {
         label: "L'Edit Mode",
         heading: "Entrer dans le maillage",
         blocks: [
           {
             type: "paragraph",
-            text: "Jusqu'ici tu as manipulé des objets en **Object Mode** : tu les déplaçais, les tournais, les mettais à l'échelle comme des blocs entiers. Le **Edit Mode** permet de descendre à l'intérieur de l'objet pour remodeler sa géométrie point par point.",
+            text: "Jusqu'ici tu étais dans l'**Object Mode** : tu les déplaçais, les tournais, les mettais à l'échelle comme des blocs entiers. Le **Edit Mode** permet de remodeler la géométrie de l'objet point par point.",
           },
           {
             type: "paragraph",
-            text: "Pour basculer entre les deux modes, sélectionne un objet et appuie sur [[Tab]]. Tu peux aussi changer de mode depuis le menu déroulant en haut à gauche du Viewport.",
+            text: "Pour basculer entre les deux modes, sélectionne l'objet et appuie sur [[Tab]]. Tu peux aussi changer de mode depuis le menu déroulant en haut à gauche du Viewport.",
           },
           {
             type: "image",
-            src: "/tutoriels/T2.1.object-edit-mode.png",
-            caption: "Le sélecteur de mode en haut à gauche du Viewport — Object Mode vs Edit Mode.",
+            src: "/tutoriels/T2.04.object-edit-mode.png",
+            caption: "Sélecteur de mode en haut à gauche du Viewport",
           },
           {
             type: "paragraph",
-            text: "En Edit Mode, le mesh de l'objet devient visible dans ses composants élémentaires. On en distingue trois types, auxquels correspondent trois modes de sélection accessibles par les touches [[1]], [[2]] et [[3]] du clavier principal :",
+            text: "En Edit Mode, le mesh, l'ensemble des points qui composent l'objet, devient visible. On en distingue trois types, auxquels correspondent trois modes de sélection accessibles par les touches [[1]], [[2]] et [[3]] du clavier principal ou en haut à gauche de la fenêtre layout :",
           },
           {
             type: "notionGrid",
             items: [
-              { term: "Vertex (1)", def: "Point dans l'espace 3D. La brique de base de toute géométrie. Un cube possède 8 vertices." },
-              { term: "Edge (2)", def: "Arête reliant deux vertices. Un cube possède 12 edges." },
-              { term: "Face (3)", def: "Surface plane délimitée par des edges. Un cube possède 6 faces. On préfère les quads (4 côtés) aux triangles pour un maillage propre." },
+              { term: "Vertex (1)", def: "Point dans l'espace 3D." },
+              { term: "Edge (2)", def: "Arête reliant deux vertices." },
+              { term: "Face (3)", def: "Surface plane délimitée par des edges. Pour un maillage propre une face doit être composée de 4 edges." },
             ],
           },
           {
             type: "image",
-            src: "/tutoriels/T2.2.vertex.edge-face.png",
-            caption: "Le même cube affiché en mode Vertex (gauche), Edge (centre) et Face (droite).",
+            src: "/tutoriels/T2.05.vertex.edge-face.png",
+            caption: "Le même objet en mode Vertex, Edge et Face",
           },
           {
-            type: "note",
-            lead: "!!!",
-            text: "Tu peux activer plusieurs modes de sélection en même temps en maintenant [[Shift]] en cliquant sur les boutons de mode. Très pratique pour sélectionner des vertices et des edges simultanément.",
+            type: "shortcuts",
+            rows: [
+              { keys: "[[Tab]]", desc: "Basculer entre Object Mode et Edit Mode" },
+              { keys: "[[1]] / [[2]] / [[3]]", desc: "Mode Vertex / Edge / Face" },
+            ],
           },
         ],
       },
       {
-        label: "Sélection",
+        label: "Options de sélection",
         heading: "Sélectionner la géométrie",
         blocks: [
           {
@@ -260,129 +303,109 @@ export const tutorials: Tutorial[] = [
           },
           {
             type: "note",
-            lead: "Conseil :",
-            text: "La sélection par edge loop ([[Alt]] + clic) est l'une des plus utilisées en pratique. Elle permet de sélectionner d'un coup toute une boucle d'arêtes qui fait le tour d'un cylindre ou encercle un membre — indispensable pour les modifications structurelles.",
+            lead: "!!!",
+            text: "La sélection par edge loop ([[Alt]] + clic) est l'une des plus utilisées en pratique. Elle permet de sélectionner d'un coup toute une boucle d'arêtes qui fait le tour d'un cylindre ou encercle un membre.",
           },
         ],
       },
       {
-        label: "Les outils fondamentaux",
+        label: "Outils",
         heading: "Construire la géométrie",
         blocks: [
+          {
+            type: "note",
+            lead: "!!!",
+            text: "Tu peux dès à présent supprimer tous les objets de la scène, en les sélectionnant et en appuyant sur [[X]] comme on l'a vu précédemment.",
+          },
+          {
+            type: "paragraph",
+            text: "Voilà on peut commencer à modéliser. Je vais te parler des outils nécessaires pour modéliser l'objet de ton choix. Pour l'exemple je vais prendre le blender (mixeur) que tu peux voir dans la vidéo de la home page, pour le tutoriel je te conseille de faire le même objet que moi.",
+          },
+          {
+            type: "note",
+            lead: "!!!",
+            text: "Quand on veut reproduire un objet qui existe, le mieux est de respecter son échelle réelle — exemple : ne pas faire une table de 2 par 5 mètres.",
+          },
           { type: "subheading", text: "Extrusion — [[E]]" },
           {
             type: "paragraph",
-            text: "C'est l'outil le plus utilisé en modélisation. Sélectionne une face (ou un edge, ou un vertex), appuie sur [[E]] et déplace la souris pour créer une nouvelle géométrie en prolongeant la sélection. C'est comme étirer la surface pour lui donner du volume.",
-          },
-          {
-            type: "paragraph",
-            text: "Après avoir appuyé sur [[E]], tu peux contraindre la direction en tapant [[X]], [[Y]] ou [[Z]]. Par exemple [[E]] [[Z]] extrud directement vers le haut.",
+            text: "Appuie sur [[Shift]] + [[A]] et sélectionne le plan dans la catégorie «mesh». Appuie sur [[N]] et fais en sorte que le plan fasse 0.15m par 0.15m. Sélectionne la face, appuie sur [[E]] et ensuite [[Z]] et déplace la souris pour créer une nouvelle géométrie sur l'axe Z. Si tu veux être précis sur la hauteur tu peux taper la distance (dans notre cas 0.20m). Et finalement réduis légèrement l'échelle de la face du haut.",
           },
           {
             type: "video",
-            youtubeId: "bjqmaNCB06U",
-            caption: "Extrusion d'une face vers le haut pour créer un volume à partir d'un plan.",
+            youtubeId: "hS14_MHv5Y0",
+            caption: "Vidéo — Extrusion d'un plan pour créer un volume",
           },
           { type: "subheading", text: "Loop Cut — [[Ctrl]] + [[R]]" },
           {
             type: "paragraph",
-            text: "Crée une boucle d'arêtes qui coupe le mesh en passant par les faces adjacentes. Survole une arête : un aperçu jaune montre où la coupe sera placée. Clique pour confirmer, puis déplace la souris pour positionner précisément la coupe, ou clique droit pour la centrer.",
-          },
-          {
-            type: "paragraph",
-            text: "Avant de cliquer pour confirmer, fais défiler la molette pour multiplier le nombre de coupes parallèles.",
+            text: "Crée une boucle d'arêtes qui coupe le mesh en passant par les faces adjacentes. Survole une arête : un aperçu jaune montre où la coupe sera placée. Clique pour confirmer, puis déplace la souris pour positionner précisément la coupe, ou clique droit pour la centrer. Avant de cliquer pour confirmer, tu peux faire défiler la molette pour multiplier le nombre de coupes parallèles et en bas à gauche de la fenêtre layout tu peux modifier manuellement toutes les options.",
           },
           {
             type: "video",
-            youtubeId: "5x0s3gnPB4o",
-            caption: "Loop Cut sur un cylindre — la ligne jaune montre l'aperçu de la coupe.",
+            youtubeId: "zkP5ymVuJkc",
+            caption: "Vidéo — Loop Cut sur le mesh",
           },
           { type: "subheading", text: "Bevel — [[Ctrl]] + [[B]]" },
           {
             type: "paragraph",
-            text: "Arrondit les arêtes sélectionnées en les remplaçant par plusieurs arêtes intermédiaires. Déplace la souris pour contrôler la largeur du biseau. Fais défiler la molette pour ajouter des segments et obtenir un arrondi plus lisse.",
+            text: "Arrondit les arêtes sélectionnées en les remplaçant par plusieurs arêtes intermédiaires. Sélectionne les 4 arêtes verticales, appuie sur [[Ctrl]] + [[B]] et déplace la souris pour contrôler la largeur du biseau. Fais défiler la molette pour ajouter des segments et obtenir un arrondi plus lisse.",
           },
           {
             type: "note",
-            lead: "Astuce :",
+            lead: "!!!",
             text: "Le Bevel fonctionne aussi sur les vertices : [[Ctrl]] + [[Shift]] + [[B]]. Il arrondit le coin en créant un polygone à la place du point.",
           },
           {
             type: "video",
-            youtubeId: "tVdbWkBPnHY",
-            caption: "Bevel sur les arêtes d'un cube — à gauche sans segments, à droite avec 3 segments.",
+            youtubeId: "ehSnKsG3848",
+            caption: "Vidéo — Bevel sur les arêtes d'un objet",
           },
-          { type: "subheading", text: "Inset — [[I]]" },
+          { type: "subheading", text: "Insert — [[I]]" },
           {
             type: "paragraph",
-            text: "Crée une face plus petite à l'intérieur d'une face sélectionnée, comme un cadre. Indispensable pour créer des fenêtres, des boutons, des panneaux en relief. Déplace la souris pour contrôler l'épaisseur du cadre intérieur.",
+            text: "Sélectionne les deux faces (haut et bas), appuie sur [[I]] pour créer une face plus petite à l'intérieur de la(les) face(s) sélectionnée(s), comme un cadre. Déplace la souris pour contrôler l'épaisseur du cadre intérieur.",
           },
           {
             type: "video",
-            youtubeId: "1_wLwSj_RPE",
-            caption: "Inset sur une face — résultat avec extrusion vers l'intérieur pour créer un renfoncement.",
+            youtubeId: "soEDDDy3Cp8",
+            caption: "Vidéo — Insert sur une face",
           },
           { type: "subheading", text: "Knife — [[K]]" },
           {
             type: "paragraph",
-            text: "Coupe le mesh librement en traçant des lignes. Clique pour poser des points, [[Entrée]] pour valider la coupe. Utile pour ajouter de la géométrie exactement là où tu en as besoin, sans passer par un Loop Cut.",
+            text: "Coupe le mesh librement en traçant des lignes. Clique pour poser des points, [[Entrée]] pour valider la coupe. Cet outil permet d'ajouter de la géométrie exactement là où tu en as besoin, sans passer par un Loop Cut.",
           },
           {
             type: "video",
-            youtubeId: "6-vmOEc2TB0",
-            caption: "Utilisation du Knife pour tracer une coupe libre sur le mesh.",
+            youtubeId: "SvGf9BP6gjg",
+            caption: "Vidéo — Knife pour tracer une coupe libre",
           },
-        ],
-      },
-      {
-        label: "Raccourcis Edit Mode",
-        heading: "Transformations et commandes utiles",
-        blocks: [
           {
             type: "shortcuts",
             rows: [
-              { keys: "[[Tab]]", desc: "Basculer entre Object Mode et Edit Mode" },
-              { keys: "[[1]] / [[2]] / [[3]]", desc: "Mode Vertex / Edge / Face" },
-              { keys: "[[G]]", desc: "Déplacer (Grab) — suivi de [[X]], [[Y]] ou [[Z]] pour contraindre l'axe" },
-              { keys: "[[S]]", desc: "Redimensionner (Scale)" },
-              { keys: "[[R]]", desc: "Faire pivoter (Rotate)" },
+              { keys: "[[Shift]] + [[A]]", desc: "Ajouter un objet à la scène" },
+              { keys: "[[N]]", desc: "Ouvrir le panneau des propriétés" },
               { keys: "[[E]]", desc: "Extrusion de la sélection" },
               { keys: "[[Ctrl]] + [[R]]", desc: "Loop Cut" },
-              { keys: "[[Ctrl]] + [[B]]", desc: "Bevel" },
-              { keys: "[[I]]", desc: "Inset" },
-              { keys: "[[F]]", desc: "Remplir — créer une face à partir de vertices ou edges sélectionnés" },
-              { keys: "[[M]]", desc: "Fusionner (Merge) les vertices sélectionnés" },
-              { keys: "[[O]]", desc: "Proportional Editing — déformer avec influence progressive" },
-              { keys: "[[Alt]] + [[Z]]", desc: "X-Ray — voir et sélectionner à travers le mesh" },
-            ],
-          },
-          {
-            type: "note",
-            lead: "Conseil :",
-            text: "Pendant un G, R ou S, tape un nombre pour une valeur précise. Par exemple [[G]] [[Z]] [[2]] déplace exactement de 2 unités sur Z. Tape [[-]] pour la direction opposée.",
-          },
-        ],
-      },
-      {
-        label: "Bonnes pratiques",
-        heading: "Modéliser proprement",
-        blocks: [
-          {
-            type: "paragraph",
-            text: "Un mesh propre facilite tout le reste du workflow — les modificateurs fonctionnent mieux, les textures s'appliquent sans distorsion, et l'animation ne crée pas d'artefacts. Voici les règles à respecter dès le début :",
-          },
-          {
-            type: "notionGrid",
-            items: [
-              { term: "Privilégier les quads", def: "Les faces à 4 côtés donnent de meilleurs résultats lors de la subdivision, du sculpt ou du rigging. Évite les triangles dans les zones qui se déforment." },
-              { term: "Éviter les N-gons", def: "Les faces à 5 côtés ou plus créent des artefacts visibles lors du rendu ou de la déformation. Découpe-les avec K ou en ajoutant des edge loops." },
-              { term: "Corriger les normales", def: "Si une face apparaît noire en rendu, sa normale est probablement inversée. Sélectionne tout avec [[A]] puis Mesh → Normals → Recalculate Outside." },
-              { term: "Appliquer les transformations", def: "Avant de travailler en Edit Mode, applique la position, la rotation et l'échelle de l'objet avec [[Ctrl]] + [[A]] → All Transforms pour éviter des comportements inattendus." },
+              { keys: "[[Ctrl]] + [[B]]", desc: "Bevel sur les arêtes" },
+              { keys: "[[Ctrl]] + [[Shift]] + [[B]]", desc: "Bevel sur les vertices" },
+              { keys: "[[I]]", desc: "Insert — créer une face à l'intérieur d'une face" },
+              { keys: "[[K]]", desc: "Knife — couper le mesh librement" },
+              { keys: "[[Entrée]]", desc: "Valider la coupe (Knife)" },
             ],
           },
           {
             type: "paragraph",
-            text: "Tu maîtrises maintenant les bases de la modélisation polygonale. Le prochain tutoriel introduit les modificateurs — des outils qui permettent de transformer la géométrie de façon non-destructive.",
+            text: "Un mesh propre facilite tout le reste du workflow (faces à 4 vertices/edges) : les modificateurs fonctionnent mieux, les textures s'appliquent sans distorsion, et l'animation ne crée pas d'artefacts. Tu as donc créé la première partie de ton objet et tu connais les outils qui te permettront de faire une grande partie des objets que tu veux.",
+          },
+          {
+            type: "paragraph",
+            text: "Voilà une vidéo de la fin de la modélisation de mon Blender, tu pourras ensuite passer aux modifiers dès que c'est fini.",
+          },
+          {
+            type: "video",
+            caption: "Vidéo — Fin de la modélisation du blender (mixeur)",
           },
         ],
       },

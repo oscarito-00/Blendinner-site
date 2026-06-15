@@ -19,7 +19,7 @@ export type ContentBlock =
   | { type: "shortcuts"; rows: { keys: string; desc: string }[] }
   | { type: "note"; lead?: string; text: string }
   | { type: "image"; src?: string; caption: string }
-  | { type: "video"; youtubeId: string; caption?: string };
+  | { type: "video"; youtubeId?: string; caption?: string };
 
 export interface TutorialSection {
   label: string; // le « kicker » au-dessus du titre
