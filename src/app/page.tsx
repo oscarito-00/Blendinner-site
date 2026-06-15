@@ -20,8 +20,7 @@ export default function HomePage() {
       {/* Bande texte + CTA */}
       <Reveal>
       <div className="home-bottom">
-        <div className="home-bottom-content">
-          <div className="home-bottom-text">
+        <div className="home-bottom-text">
           <div className="about-block-label">Notre but</div>
           <div className="about-body">
             <p>
@@ -35,9 +34,8 @@ export default function HomePage() {
               liberté.
             </p>
           </div>
-          </div>
-          <Link href="/tutoriels" className="btn-main">Tutoriels<ArrowIcon /></Link>
         </div>
+        <Link href="/tutoriels" className="btn-main">Tutoriels<ArrowIcon /></Link>
       </div>
       </Reveal>
 

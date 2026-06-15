@@ -6,6 +6,7 @@ export interface NewsItem {
   text: string;
   imageLabel: string; // libellé du placeholder en attendant une vraie image
   image?: string; // /images/xxx.jpg quand disponible
+  link?: string; // URL de destination au clic sur la carte
 }
 
 export const news: NewsItem[] = [
@@ -15,13 +16,15 @@ export const news: NewsItem[] = [
     text: "La version 5.1.2 de Blender est disponible au téléchargement. Cette mise à jour corrective apporte des correctifs de stabilité et des améliorations de performances.",
     imageLabel: "Image — Blender 5.1.2",
     image: "/actualité/blender-actu1.jpg",
+    link: "https://www.blender.org/download/",
   },
   {
     date: "17 Juin 2026",
     title: "Les deux premiers tutoriels sont en ligne",
     text: "Les tutoriels n°1 et n°2 sont désormais disponibles sur le site : interface & navigation et modélisation de base. De quoi bien démarrer avec Blender.",
     imageLabel: "Image — Tutoriels",
-    image: "/actualité/blender-actu2.jpg",
+    image: "/actualité/blender-actu2.0.jpg",
+    link: "/tutoriels",
   },
   {
     date: "23 Juin 2026",
@@ -29,5 +32,6 @@ export const news: NewsItem[] = [
     text: "La communauté Blender se retrouve à Annecy pour un Blender Breakfast, en marge du Festival International du Film d'Animation.",
     imageLabel: "Image — Blender Breakfast Annecy",
     image: "/actualité/blender-actu3.jpg",
+    link: "https://www.blender.org/press/blender-in-annecy-2026/",
   },
 ];
