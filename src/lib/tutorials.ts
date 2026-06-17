@@ -207,7 +207,6 @@ export const tutorials: Tutorial[] = [
           {
             type: "video",
             youtubeId: "YkRwP-sgWNg",
-            caption: "Vidéo — Déplacement d'un objet avec G et contrainte d'axe",
           },
           {
             type: "paragraph",
@@ -216,7 +215,6 @@ export const tutorials: Tutorial[] = [
           {
             type: "video",
             youtubeId: "ekBzmla9PuU",
-            caption: "Vidéo — Mise à l'échelle d'un objet avec S",
           },
           {
             type: "paragraph",
@@ -225,7 +223,6 @@ export const tutorials: Tutorial[] = [
           {
             type: "video",
             youtubeId: "AJtvugF_TKs",
-            caption: "Vidéo — Rotation d'un objet avec R",
           },
           {
             type: "shortcuts",
@@ -334,7 +331,6 @@ export const tutorials: Tutorial[] = [
           {
             type: "video",
             youtubeId: "hS14_MHv5Y0",
-            caption: "Vidéo — Extrusion d'un plan pour créer un volume",
           },
           { type: "subheading", text: "Loop Cut — [[Ctrl]] + [[R]]" },
           {
@@ -344,7 +340,6 @@ export const tutorials: Tutorial[] = [
           {
             type: "video",
             youtubeId: "zkP5ymVuJkc",
-            caption: "Vidéo — Loop Cut sur le mesh",
           },
           { type: "subheading", text: "Bevel — [[Ctrl]] + [[B]]" },
           {
@@ -359,7 +354,6 @@ export const tutorials: Tutorial[] = [
           {
             type: "video",
             youtubeId: "ehSnKsG3848",
-            caption: "Vidéo — Bevel sur les arêtes d'un objet",
           },
           { type: "subheading", text: "Insert — [[I]]" },
           {
@@ -369,7 +363,6 @@ export const tutorials: Tutorial[] = [
           {
             type: "video",
             youtubeId: "soEDDDy3Cp8",
-            caption: "Vidéo — Insert sur une face",
           },
           { type: "subheading", text: "Knife — [[K]]" },
           {
@@ -379,7 +372,6 @@ export const tutorials: Tutorial[] = [
           {
             type: "video",
             youtubeId: "SvGf9BP6gjg",
-            caption: "Vidéo — Knife pour tracer une coupe libre",
           },
           {
             type: "shortcuts",
@@ -406,7 +398,6 @@ export const tutorials: Tutorial[] = [
           {
             type: "video",
             youtubeId: "7kNZSPBYJlM",
-            caption: "Vidéo — Fin de la modélisation du blender (mixeur)",
           },
         ],
       },
