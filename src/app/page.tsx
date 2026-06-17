@@ -17,25 +17,31 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Bande texte + CTA */}
+      {/* Bande image + texte + CTA — deux colonnes */}
       <Reveal>
       <div className="home-bottom">
-        <div className="home-bottom-text">
-          <div className="about-block-label">Notre but</div>
-          <div className="about-body">
-            <p>
-              Vous souhaitez découvrir Blender et apprendre à le maîtriser ? Cette formation
-              est conçue pour vous accompagner pas à pas dans votre apprentissage. À travers
-              nos tutoriels, nous transmettons une compréhension de l&apos;espace 3D, une
-              maîtrise des outils et des réglages, ainsi qu&apos;une méthode de travail : des
-              aspects indispensables à la réalisation de vos premiers projets. L&apos;objectif
-              est de vous transmettre les bases théoriques nécessaires pour devenir autonome,
-              vous permettant ainsi d&apos;expérimenter, de créer et d&apos;évoluer en toute
-              liberté.
-            </p>
-          </div>
+        <div className="home-bottom-left">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/home-page-image/image-site-2.png" alt="Aperçu de Blender" />
         </div>
-        <Link href="/tutoriels" className="btn-main">Tutoriels<ArrowIcon /></Link>
+        <div className="home-bottom-right">
+          <div className="home-bottom-text">
+            <div className="about-block-label">Notre but</div>
+            <div className="about-body">
+              <p>
+                Vous souhaitez découvrir Blender et apprendre à le maîtriser ? Cette formation
+                est conçue pour vous accompagner pas à pas dans votre apprentissage. À travers
+                nos tutoriels, nous transmettons une compréhension de l&apos;espace 3D, une
+                maîtrise des outils et des réglages, ainsi qu&apos;une méthode de travail : des
+                aspects indispensables à la réalisation de vos premiers projets. L&apos;objectif
+                est de vous transmettre les bases théoriques nécessaires pour devenir autonome,
+                vous permettant ainsi d&apos;expérimenter, de créer et d&apos;évoluer en toute
+                liberté.
+              </p>
+            </div>
+          </div>
+          <Link href="/tutoriels" className="btn-main">Tutoriels<ArrowIcon /></Link>
+        </div>
       </div>
       </Reveal>
 

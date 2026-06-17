@@ -405,6 +405,7 @@ export const tutorials: Tutorial[] = [
           },
           {
             type: "video",
+            youtubeId: "7kNZSPBYJlM",
             caption: "Vidéo — Fin de la modélisation du blender (mixeur)",
           },
         ],
